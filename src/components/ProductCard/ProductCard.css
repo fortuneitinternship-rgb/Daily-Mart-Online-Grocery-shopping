@@ -1,0 +1,13 @@
+.product-image {
+  height: 180px;
+  object-fit: contain;
+  padding: 15px;
+}
+
+.card {
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
