@@ -1,42 +1,21 @@
-import "./ProductCard.css";
-
-function ProductCard({ product, onAddToCart, onAddToWishlist }) {
+function ProductCard({ product }) {
   return (
-    <div className="card h-100 shadow-sm">
-      <img
-        src={product.image}
-        className="card-img-top product-image"
-        alt={product.name}
-      />
+    <div className="card h-100">
+      <div className="card-body text-center">
+        <h1>{product.image}</h1>
 
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title">{product.name}</h5>
-
-        <p className="text-success fw-bold">
-          ₹{product.price}
-        </p>
+        <h5>{product.name}</h5>
 
         <p>
-          <i className="bi bi-star-fill text-warning"></i>{" "}
-          {product.rating}
+          ₹{product.price}
+          <del className="ms-2 text-muted">₹{product.oldPrice}</del>
         </p>
 
-        <div className="d-flex gap-2 mt-auto">
-          <button
-            className="btn btn-success flex-grow-1"
-            onClick={() => onAddToCart?.(product)}
-          >
-            Add to Cart
-          </button>
+        <p>⭐ {product.rating}</p>
 
-          <button
-            className="btn btn-outline-danger"
-            onClick={() => onAddToWishlist?.(product)}
-            aria-label={`Add ${product.name} to wishlist`}
-          >
-            <i className="bi bi-heart"></i>
-          </button>
-        </div>
+        <span className="badge bg-success">{product.discount}</span>
+
+        <button className="btn btn-success w-100 mt-3">Add to Cart</button>
       </div>
     </div>
   );

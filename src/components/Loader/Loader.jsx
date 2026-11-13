@@ -1,15 +1,11 @@
-function Loader() {
+export default function Loader({ label = "Loading..." }) {
   return (
-    <div className="d-flex justify-content-center align-items-center py-5">
-      <div
-        className="spinner-border text-success"
-        role="status"
-        aria-label="Loading"
-      >
-        <span className="visually-hidden">Loading...</span>
-      </div>
+    <div
+      className="d-flex justify-content-center align-items-center gap-2 py-5"
+      role="status"
+    >
+      <div className="spinner-border text-success" aria-hidden="true" />
+      <span className="visually-hidden">{label}</span>
     </div>
   );
 }
-
-export default Loader;

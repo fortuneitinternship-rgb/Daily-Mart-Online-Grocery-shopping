@@ -1,70 +1,69 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar() {
+export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-white shadow-sm px-3">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
       <div className="container">
-        <Link className="navbar-brand fw-bold text-success" to="/">
-          <i className="bi bi-basket2-fill me-2"></i>
+        <Link className="navbar-brand fw-bold text-success fs-3" to="/">
+          <i className="bi bi-basket2-fill me-2" />
           Daily Mart
         </Link>
-
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#dailyMartNavbar"
-          aria-controls="dailyMartNavbar"
+          data-bs-target="#dailyMartNav"
+          aria-controls="dailyMartNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" />
         </button>
-
-        <div
-          className="collapse navbar-collapse"
-          id="dailyMartNavbar"
-        >
+        <div className="collapse navbar-collapse" id="dailyMartNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <NavLink className="nav-link" to="/">
                 Home
-              </Link>
+              </NavLink>
             </li>
-
             <li className="nav-item">
-              <Link className="nav-link" to="/products">
+              <NavLink className="nav-link" to="/products">
                 Products
-              </Link>
+              </NavLink>
             </li>
-
             <li className="nav-item">
-              <Link className="nav-link" to="/products">
+              <NavLink className="nav-link" to="/products">
                 Categories
-              </Link>
+              </NavLink>
             </li>
           </ul>
-
-          <form className="d-flex me-lg-3 mb-3 mb-lg-0">
+          <form
+            className="d-flex nav-search me-lg-3 my-2 my-lg-0"
+            onSubmit={(event) => event.preventDefault()}
+          >
             <input
               className="form-control"
               type="search"
               placeholder="Search groceries"
               aria-label="Search groceries"
             />
+            <button
+              className="btn btn-outline-success"
+              type="submit"
+              aria-label="Search"
+            >
+              <i className="bi bi-search" />
+            </button>
           </form>
-
-          <div className="d-flex align-items-center gap-3">
-            <Link to="/wishlist" className="text-dark">
-              <i className="bi bi-heart fs-5"></i>
+          <div className="d-flex align-items-center gap-3 py-2">
+            <Link to="/wishlist" className="nav-icon" aria-label="Wishlist">
+              <i className="bi bi-heart fs-5" />
             </Link>
-
-            <Link to="/cart" className="text-dark">
-              <i className="bi bi-cart3 fs-5"></i>
+            <Link to="/cart" className="nav-icon" aria-label="Cart">
+              <i className="bi bi-cart3 fs-5" />
             </Link>
-
-            <Link to="/login" className="btn btn-success">
+            <Link to="/login" className="btn btn-success btn-sm px-3">
               Login
             </Link>
           </div>
@@ -73,5 +72,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;

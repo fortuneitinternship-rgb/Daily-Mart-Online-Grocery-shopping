@@ -1,13 +1,8 @@
-.navbar-brand {
-  font-size: 24px;
-}
-
-.navbar .nav-link:hover {
-  color: #198754;
-}
-
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+.navbar-brand { letter-spacing: -0.5px; }
+.navbar .nav-link.active, .navbar .nav-link:hover, .nav-icon:hover { color: #198754 !important; }
+.nav-icon { color: #212529; }
+.nav-search { max-width: 300px; }
+.nav-search input { min-width: 150px; }
+@media (max-width: 991px) {
+  .nav-search { max-width: none; }
 }

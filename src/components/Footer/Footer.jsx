@@ -1,62 +1,127 @@
-function Footer() {
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import "./Footer.css";
+
+export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+
+    if (!email) {
+      setMessage("Please enter your email address.");
+      return;
+    }
+
+    setMessage("Thank you for subscribing!");
+    setEmail("");
+  };
+
   return (
-    <footer className="bg-dark text-white mt-5 py-4">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4 mb-3">
-            <h4 className="text-success">Daily Mart</h4>
+    <footer className="daily-footer">
+      {/* Footer Main Section */}
+      <div className="footer-container">
+        <div className="footer-row">
+          {/* Column 1: Daily Mart */}
+          <div className="footer-column">
+            <h3>[SPEC] DAILY MART</h3>
 
             <p>
-              Your everyday grocery shopping destination.
-              Fresh products and daily essentials in one place.
+              Low-fidelity wireframe architectural blueprint for daily
+              essentials procurement and inventory fulfillment.
             </p>
+
+            <span className="system-version">SYS_VER: 2.4.0 // SCHEMATIC</span>
           </div>
 
-          <div className="col-md-4 mb-3">
-            <h5>Quick Links</h5>
+          {/* Column 2: Customer Service */}
+          <div className="footer-column">
+            <h3>CUSTOMER SERVICE</h3>
 
-            <ul className="list-unstyled">
+            <ul>
               <li>
-                <a href="/" className="text-white">
-                  Home
-                </a>
+                <Link to="/orders">Order Tracking & Status</Link>
               </li>
 
               <li>
-                <a href="/products" className="text-white">
-                  Products
-                </a>
+                <Link to="/delivery">Fulfillment & Delivery Specs</Link>
               </li>
 
               <li>
-                <a href="/about" className="text-white">
-                  About Us
-                </a>
+                <Link to="/returns">Returns & Replacement Policy</Link>
+              </li>
+
+              <li>
+                <Link to="/contact">Helpdesk Ticketing</Link>
               </li>
             </ul>
           </div>
 
-          <div className="col-md-4 mb-3">
-            <h5>Customer Service</h5>
+          {/* Column 3: Categories */}
+          <div className="footer-column">
+            <h3>CATEGORIES</h3>
 
-            <p>Contact: support@dailymart.example</p>
+            <ul>
+              <li>
+                <Link to="/products">01 // Fresh Produce & Greens</Link>
+              </li>
 
-            <div className="d-flex gap-3">
-              <i className="bi bi-facebook"></i>
-              <i className="bi bi-instagram"></i>
-              <i className="bi bi-twitter-x"></i>
-            </div>
+              <li>
+                <Link to="/products">02 // Dairy & Refrigerated</Link>
+              </li>
+
+              <li>
+                <Link to="/products">03 // Pantry Staples & Grains</Link>
+              </li>
+
+              <li>
+                <Link to="/products">04 // Household & Sanitation</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Newsletter */}
+          <div className="footer-column newsletter">
+            <h3>NEWSLETTER SIGNUP</h3>
+
+            <p>Subscribe to stock alerts and weekly inventory drops.</p>
+
+            <form onSubmit={handleSubscribe}>
+              <div className="newsletter-form">
+                <input
+                  type="email"
+                  placeholder="developer@domain.wire"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+
+                <button type="submit">SUBMIT</button>
+              </div>
+            </form>
+
+            {message && <p className="newsletter-message">{message}</p>}
           </div>
         </div>
 
-        <hr />
+        {/* Footer Bottom */}
+        <div className="footer-bottom">
+          <p>
+            © {new Date().getFullYear()} DAILY MART COMMERCE FRAMEWORK. ALL
+            RIGHTS RESERVED. [WIREFRAME VIEW]
+          </p>
 
-        <p className="text-center mb-0">
-          © {new Date().getFullYear()} Daily Mart. All rights reserved.
-        </p>
+          <div className="payment-section">
+            <span>PAYMENT_SPECS:</span>
+
+            <span className="payment-box">VISA</span>
+            <span className="payment-box">MC</span>
+            <span className="payment-box">UPI</span>
+            <span className="payment-box">COD</span>
+          </div>
+        </div>
       </div>
     </footer>
   );
 }
-
-export default Footer;

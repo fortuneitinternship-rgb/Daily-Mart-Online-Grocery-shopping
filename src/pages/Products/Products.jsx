@@ -1,8 +1,11 @@
+import React from "react";
+
 function Products() {
   return (
-    <div className="container py-5">
-      <h1>Our Products</h1>
-      <p>Explore all Daily Mart products.</p>
+    <div className="container mt-4">
+      <h2>Our Grocery Products</h2>
+
+      <p>Explore our grocery products.</p>
     </div>
   );
 }
